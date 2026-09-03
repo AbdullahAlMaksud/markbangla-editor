@@ -1,0 +1,13 @@
+{
+  "id": "aoXALAGu",
+  "markdown": "# Welcome to MarkBangla\n\nMarkBangla is a modern, high-performance Markdown editor and PDF exporter with real-time live preview, elegant typography presets, and cloud sharing capabilities.\n\nAll your documents remain **privately stored on your computer** by default. Use the top toolbar to switch views, export to PDF, or generate a public share link.\n\n## Key Features\n\n- **Split Pane Workspace**: Resizable dual-view editor with live synchronized preview.\n- **Diagrams & Flowcharts**: Instant SVG rendering from `mermaid` code blocks.\n- **Typography & Themes**: 8 bespoke styles including Classic Serif, Modern Clean, Academic Paper, and Dark Obsidian.\n- **Custom Font Support**: Upload your own TTF, OTF, or WOFF fonts anytime.\n- **Zero Lock-in Export**: Download high-fidelity vector PDFs or raw `.md` files.\n- **Cloud Sharing**: Generate secure public links with transparent privacy controls.\n\n### Quick Checklist\n\n- [x] Write rich Markdown with GitHub-flavored tables & task lists\n- [x] Render real-time Mermaid diagrams\n- [x] Resize or hide panels with the interactive center handle\n- [x] Print or export directly to clean A4 / Letter PDF\n- [ ] Write something extraordinary today!\n\n> \"Simplicity is prerequisite for reliability.\" — Edsger W. Dijkstra\n\n| Feature | Support | Status |\n| :--- | :---: | :--- |\n| GitHub Flavored Markdown | Yes | Fully supported |\n| Mermaid.js Diagrams | Yes | Client-side rendered |\n| Local Storage Privacy | Yes | 100% Private on device |\n| Vector PDF Export | Yes | One-click print export |\n\n```mermaid\nflowchart TD\n    A[\"User Writes Markdown\"] --> B[\"Real-time Parser & Sanitizer\"]\n    B --> C[\"Live Visual Preview\"]\n    C --> D{\"Export Choice\"}\n    D -- \"Local\" --> E[\"Vector PDF or .md File\"]\n    D -- \"Share Link\" --> F[\"Encrypted Cloud Snapshot\"]\n```\n\n---\n\nHappy writing!",
+  "title": "Welcome to MarkBangla",
+  "preset": "classic",
+  "fontChoice": "default",
+  "fontSize": 16,
+  "pageSize": "a4",
+  "wide": false,
+  "views": 0,
+  "createdAt": "2026-09-03T03:29:55.057Z",
+  "updatedAt": "2026-09-03T03:29:55.057Z"
+}
