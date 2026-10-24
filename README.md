@@ -2,8 +2,6 @@
 
 **Short Description:** A modern, browser-based Markdown editor designed for Bengali and English typography, featuring real-time split-screen preview, customizable typography themes, Mermaid diagrams, custom font uploads, vector-quality PDF export, and cloud document sharing.
 
-**Technology Badges:** pnpm, Next.js, TypeScript, Tailwind CSS, MongoDB, MIT License.
-
 [![pnpm](https://img.shields.io/badge/pnpm-9+-4a4a55?style=for-the-badge&logo=pnpm&logoColor=f69220)](https://pnpm.io/)
 [![Next.js](https://img.shields.io/badge/Next.js-16.4-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.5-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
@@ -80,6 +78,8 @@ MarkBangla includes eight curated themes for different writing and reading exper
 - **Code Highlighting:** [highlight.js](https://highlightjs.org/)
 - **Icons:** [Lucide React](https://lucide.dev/)
 - **PDF Export:** Browser-native CSS print engine
+
+---
 
 ## Getting Started
 
