@@ -1,6 +1,6 @@
 # MarkBangla — Markdown Editor for Bangla and English
 
-**Short Description:** A modern, browser-based Markdown editor designed for Bengali and English typography, featuring real-time split-screen preview, customizable typography themes, Mermaid diagrams, custom font uploads, vector-quality PDF export, and cloud document sharing.
+A modern, browser-based Markdown editor designed for Bengali and English typography, featuring real-time split-screen preview, customizable typography themes, Mermaid diagrams, custom font uploads, vector-quality PDF export, and cloud document sharing.
 
 [![pnpm](https://img.shields.io/badge/pnpm-9+-4a4a55?style=for-the-badge&logo=pnpm&logoColor=f69220)](https://pnpm.io/)
 [![Next.js](https://img.shields.io/badge/Next.js-16.4-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
