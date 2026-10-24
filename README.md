@@ -2,8 +2,6 @@
 
 <div align="center">
 
-![MarkBangla Logo](public/images/logo.png)
-
 **MarkBangla** is a modern, fast, and feature-rich Markdown editor tailored for Bengali and English typography. It features a real-time split-screen preview, 8 curated typography themes, Mermaid diagram rendering, draggable pane resizing, custom font uploads, vector-quality PDF and Markdown export, and cloud document sharing.
 
 [![pnpm](https://img.shields.io/badge/pnpm-9+-4a4a55?style=for-the-badge&logo=pnpm&logoColor=f69220)](https://pnpm.io/)
@@ -86,22 +84,7 @@ pnpm install
 
 ### 3. Environment Configuration
 
-Create a `.env.local` file in the root directory:
-
-```env
-# MongoDB Connection String (Optional - defaults to local fallback if omitted)
-MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.abcde.mongodb.net/markdown_app?retryWrites=true&w=majority
-
-# App Base URL (local default: http://localhost:3000)
-NEXT_PUBLIC_APP_URL=http://localhost:3000
-
-# GitHub Backup Storage (Optional)
-GITHUB_TOKEN=
-GITHUB_REPO=AbdullahAlMaksud/markdown-editor-bangla
-
-# Document Encryption Secret (Optional)
-ENCRYPTION_SECRET=
-```
+Create a `.env.local` file in the root directory. Then run. For more instruction please follow the `.env.example` file.
 
 *(Note: If MongoDB is not configured, the application automatically uses a persistent local fallback store, enabling full functionality without database setup).*
 
