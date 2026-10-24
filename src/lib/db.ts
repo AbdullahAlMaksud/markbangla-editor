@@ -207,7 +207,7 @@ export async function saveSharedDocument(
 ): Promise<SharedDocument> {
   const id = generateShortId(8);
   const now = new Date().toISOString();
-  const dbName = process.env.MONGODB_DB || "markdown_app";
+  const dbName = process.env.MONGODB_DB || "markbangla";
 
   // Securely encrypt markdown content before storing in database
   const encryptedMarkdown = encryptData(input.markdown);
@@ -258,7 +258,7 @@ export async function getSharedDocument(
   id: string
 ): Promise<SharedDocument | null> {
   if (!id) return null;
-  const dbName = process.env.MONGODB_DB || "markdown_app";
+  const dbName = process.env.MONGODB_DB || "markbangla";
 
   let rawDoc: SharedDocument | null = null;
 

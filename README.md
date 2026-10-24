@@ -72,8 +72,8 @@ npm install -g pnpm
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/AbdullahAlMaksud/markdown-editor-bangla.git
-cd markdown-editor-bangla
+git clone https://github.com/AbdullahAlMaksud/markbangla-editor.git
+cd markbangla-editor
 ```
 
 ### 2. Install Dependencies
