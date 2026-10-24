@@ -1,12 +1,8 @@
-# MarkBangla — Markdown editor for Bangla and English
+# MarkBangla — Markdown Editor for Bangla and English
 
-A modern Markdown editor built for Bengali and English typography, featuring real-time split-screen preview, 8 curated typography themes, Mermaid diagrams, custom font uploads, vector-quality PDF export, Markdown downloads, and cloud document sharing.
-<p align="center">
-  <img width="49%" alt="MarkBangla screenshot 1" src="https://github.com/user-attachments/assets/38f390e1-a873-4b97-94e9-d25b03b83dcb" />
-  <img width="49%" alt="MarkBangla screenshot 2" src="https://github.com/user-attachments/assets/b9a2e066-a4a6-4d3e-9fac-20e3bb00f3ad" />
-</p>
+**Short Description:** A modern, browser-based Markdown editor designed for Bengali and English typography, featuring real-time split-screen preview, customizable typography themes, Mermaid diagrams, custom font uploads, vector-quality PDF export, and cloud document sharing.
 
-
+**Technology Badges:** pnpm, Next.js, TypeScript, Tailwind CSS, MongoDB, MIT License.
 
 [![pnpm](https://img.shields.io/badge/pnpm-9+-4a4a55?style=for-the-badge&logo=pnpm&logoColor=f69220)](https://pnpm.io/)
 [![Next.js](https://img.shields.io/badge/Next.js-16.4-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
@@ -15,49 +11,49 @@ A modern Markdown editor built for Bengali and English typography, featuring rea
 [![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 
+<p align="center">
+  <img width="49%" alt="MarkBangla screenshot 1" src="https://github.com/user-attachments/assets/38f390e1-a873-4b97-94e9-d25b03b83dcb" />
+  <img width="49%" alt="MarkBangla screenshot 2" src="https://github.com/user-attachments/assets/b9a2e066-a4a6-4d3e-9fac-20e3bb00f3ad" />
+</p>
+
 ---
 
 ## Table of Contents
 
-- [About](#about)
-- [Features](#features)
-- [Typography Themes](#typography-themes)
-- [Tech Stack](#tech-stack)
-- [Getting Started](#getting-started)
-- [Environment Variables](#environment-variables)
-- [Available Scripts](#available-scripts)
-- [Project Structure](#project-structure)
-- [Deployment](#deployment)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
+- About
+- Features
+- Tech Stack
+- Getting Started
+- Contributing
+- License
+- Contact
 
 ## About
 
-MarkBangla is a modern, browser-based Markdown editor designed for Bengali and English writing. It combines a distraction-free writing environment with a real-time preview, carefully curated typography themes, and flexible export options.
+MarkBangla is a modern, browser-based Markdown editor designed for Bengali and English writing. It provides a distraction-free writing environment with a real-time preview, customizable typography themes, and flexible document export options.
 
-The editor is optimized for Bengali typography, including complex conjunct characters (যুক্তাক্ষর), while also supporting English text and multilingual documents. Whether you're preparing an article, an academic paper, a report, or a book manuscript, MarkBangla helps you write, format, preview, and export documents from one workspace.
+Optimized for Bengali typography, including complex conjunct characters (যুক্তাক্ষর), MarkBangla also supports English text and multilingual documents. Whether you're writing articles, academic papers, reports, or book manuscripts, you can write, format, preview, and export your content from a single workspace.
 
-With resizable editing panels, custom font uploads, Mermaid diagram rendering, and shareable cloud documents, MarkBangla brings writing and document publishing together in a single application.
+With resizable editing panels, custom font uploads, Mermaid diagram rendering, and shareable cloud documents, MarkBangla brings writing and document publishing together in one application.
 
 ## Features
 
-- **Bilingual Typography Support:** Optimized Bengali and English text rendering with fonts such as Tiro Bangla, Hind Siliguri, Noto Sans Bengali, Lora, and Inter.
-- **Interactive Split-Screen Editor:** Write Markdown and preview the rendered document side by side with a balanced 50/50 default layout.
+- **Bilingual Typography Support:** Optimized Bengali and English text rendering using fonts such as Tiro Bangla, Hind Siliguri, Noto Sans Bengali, Lora, and Inter.
+- **Real-Time Split-Screen Preview:** Write Markdown and preview the rendered document side by side with a balanced 50/50 default layout.
 - **Draggable Pane Resizing:** Adjust the editor and preview widths using mouse or touch gestures.
-- **Flexible Panel Controls:** Collapse or maximize either panel, with edge-docked controls for restoring hidden panels.
-- **Cloud Document Sharing:** Save documents and generate unique shareable URLs through the `/share/[id]` route.
-- **Social Media Preview Metadata:** Generate rich OpenGraph metadata for shared documents.
-- **Read-Only Shared Documents:** Let recipients view shared content and use the **Open in Editor** option to edit or remix it.
-- **Mermaid Diagram Rendering:** Render Mermaid code blocks into SVG diagrams, including flowcharts, sequence diagrams, state machines, and class diagrams.
-- **Vector-Quality PDF Export:** Use the browser's native CSS print engine to generate sharp PDFs without rasterization blur.
+- **Flexible Panel Controls:** Collapse or maximize either panel and restore hidden panels using edge-docked controls.
+- **Mermaid Diagram Rendering:** Render Mermaid code blocks as SVG diagrams, including flowcharts, sequence diagrams, state machines, and class diagrams.
+- **Vector-Quality PDF Export:** Generate sharp PDFs using the browser's native CSS print engine without rasterization blur.
 - **Markdown File Download:** Export documents as UTF-8 `.md` files, automatically named using the document's primary title.
 - **Custom Font Uploads:** Upload and preview `.ttf`, `.otf`, `.woff`, and `.woff2` fonts directly in the browser.
-- **Dynamic Page Counter:** Calculate document pages using standard A4 and US Letter page dimensions.
-- **Typography-Focused Interface:** Enjoy streamlined, slim scrollbars and carefully designed writing and reading panels.
+- **Dynamic Page Counter:** Calculate document pages using standard A4 and US Letter dimensions.
+- **Cloud Document Sharing:** Save documents and generate unique shareable URLs using the `/share/[id]` route.
+- **Social Media Preview Metadata:** Generate rich OpenGraph metadata for shared documents.
+- **Read-Only Shared Documents:** Let recipients view shared content and use the **Open in Editor** option to edit or remix it.
 - **Flexible Storage:** Support MongoDB Atlas, GitHub API repository backup, and local fallback storage for document persistence.
+- **Typography-Focused Interface:** Enjoy streamlined scrollbars and carefully designed writing and reading panels.
 
-## Typography Themes
+### Typography Themes
 
 MarkBangla includes eight curated themes for different writing and reading experiences.
 
@@ -77,10 +73,10 @@ MarkBangla includes eight curated themes for different writing and reading exper
 - **Package Manager:** [pnpm](https://pnpm.io/)
 - **Framework:** [Next.js 16](https://nextjs.org/) — App Router, Server Components, and dynamic API routes
 - **Language:** [TypeScript](https://www.typescriptlang.org/)
-- **Styling:** [Tailwind CSS](https://tailwindcss.com/) and [shadcn/ui](https://ui.shadcn.com/)
+- **Styling & UI Components:** [Tailwind CSS](https://tailwindcss.com/) and [shadcn/ui](https://ui.shadcn.com/)
 - **Database:** [MongoDB Atlas](https://www.mongodb.com/) with local storage fallback
 - **Backup Storage:** GitHub API for repository synchronization
-- **Diagrams:** [Mermaid.js](https://mermaid.js.org/)
+- **Diagram Rendering:** [Mermaid.js](https://mermaid.js.org/)
 - **Code Highlighting:** [highlight.js](https://highlightjs.org/)
 - **Icons:** [Lucide React](https://lucide.dev/)
 - **PDF Export:** Browser-native CSS print engine
@@ -119,7 +115,7 @@ pnpm install
 
 Create a `.env.local` file in the project root and configure the required variables using `.env.example` as your reference.
 
-See [Environment Variables](#environment-variables) for additional guidance.
+See [Environment Variables](#environment-variables) for details.
 
 **4. Start the development server**
 
@@ -136,24 +132,18 @@ pnpm build
 pnpm start
 ```
 
-### Database Configuration
+### Environment Variables
 
-MongoDB Atlas is used for database-backed document storage. When MongoDB is not configured, the application can fall back to local persistent storage.
-
-Configure the required environment variables to enable the storage and sharing integrations you intend to use. Check `.env.example` for the supported configuration options.
-
-## Environment Variables
-
-MarkBangla uses environment variables for application configuration and external integrations.
+MarkBangla uses environment variables to configure application services and external integrations.
 
 1. Create a `.env.local` file in the project root.
-2. Review `.env.example` for the available variables and their intended use.
-3. Add the configuration required for MongoDB Atlas and GitHub API integration, as applicable.
+2. Review `.env.example` for available variables and their intended use.
+3. Configure the required settings for MongoDB Atlas and GitHub API integration, as applicable.
 4. Keep credentials and access tokens private.
 
 Never commit your real `.env.local` file or expose private credentials in client-side code.
 
-## Available Scripts
+### Available Scripts
 
 | Command | Description |
 | --- | --- |
@@ -161,60 +151,58 @@ Never commit your real `.env.local` file or expose private credentials in client
 | `pnpm build` | Create a production build. |
 | `pnpm start` | Run the production build. |
 
-## Project Structure
+### Project Structure
 
 ```text
 markbangla-editor/
 ├── public/
-│   └── images/                   # Logo and OpenGraph preview assets
+│   └── images/                    # Logo and OpenGraph preview assets
 ├── src/
 │   ├── app/
 │   │   ├── api/
-│   │   │   └── share/            # API routes for shared documents
+│   │   │   └── share/             # API routes for shared documents
 │   │   ├── share/
-│   │   │   └── [id]/             # Public shared-document viewer
-│   │   ├── globals.css           # Global styles, themes, and print layouts
-│   │   ├── layout.tsx            # Root layout and OpenGraph metadata
-│   │   └── page.tsx              # Main application page
+│   │   │   └── [id]/              # Public shared-document viewer
+│   │   ├── globals.css            # Global styles, themes, and print layouts
+│   │   ├── layout.tsx             # Root layout and OpenGraph metadata
+│   │   └── page.tsx               # Main application page
 │   ├── components/
 │   │   ├── markdown-pdf-editor.tsx # Main editor re-export
-│   │   ├── navbar.tsx            # Header navigation and actions
-│   │   ├── share-modal.tsx        # Document-sharing dialog
-│   │   └── ui/                   # Reusable UI primitives
+│   │   ├── navbar.tsx              # Header navigation and actions
+│   │   ├── share-modal.tsx         # Document-sharing dialog
+│   │   └── ui/                     # Reusable UI primitives
 │   ├── screens/
-│   │   ├── editor-screen.tsx     # Split-pane Markdown editor
-│   │   └── share-screen.tsx      # Shared-document viewer
+│   │   ├── editor-screen.tsx      # Split-pane Markdown editor
+│   │   └── share-screen.tsx       # Shared-document viewer
 │   └── lib/
-│       ├── db.ts                 # Database, GitHub sync, and local fallback
-│       ├── encryption.ts         # Document encryption utilities
-│       └── utils.ts              # Tailwind CSS class utilities
-├── .env.example                  # Environment variable template
-├── .env.local                    # Local environment file (not committed)
+│       ├── db.ts                  # Database, GitHub sync, and local fallback
+│       ├── encryption.ts          # Document encryption utilities
+│       └── utils.ts               # Tailwind CSS class utilities
+├── .env.example                   # Environment variable template
+├── .env.local                     # Local environment file (not committed)
 └── README.md
 ```
 
-## Deployment
+### Deployment
 
-MarkBangla can be deployed to Vercel or another hosting platform that supports Next.js.
+MarkBangla can be deployed to [Vercel](https://vercel.com/) or another hosting platform that supports Next.js.
 
-Before deploying:
+Before deploying, configure the environment variables required by your chosen storage integrations and ensure that the database and GitHub API settings are correct.
 
-1. Configure the environment variables required by your chosen storage integrations.
-2. Ensure the required database and GitHub API settings are configured if you use those integrations.
-3. Build and run the application using the production scripts.
+To build and run the production application:
 
 ```bash
 pnpm build
 pnpm start
 ```
 
-For platform-specific deployment instructions, consult the [Next.js documentation](https://nextjs.org/docs/app/getting-started/deploying).
+For platform-specific instructions, consult the [Next.js deployment documentation](https://nextjs.org/docs/app/getting-started/deploying).
 
 ## Contributing
 
 Contributions are welcome and appreciated.
 
-1. Fork the project.
+1. Fork the repository.
 2. Create a feature branch:
 
    ```bash
@@ -239,12 +227,16 @@ For larger changes, consider opening an issue first to discuss the proposed impr
 
 ## License
 
-Distributed under the MIT License. See [LICENSE](LICENSE) for details.
+Distributed under the MIT License. See [`LICENSE`](./LICENSE) for details.
 
 ## Contact
 
 **Abdullah Al Maksud**
 
-GitHub: [@AbdullahAlMaksud](https://github.com/AbdullahAlMaksud)
+Email: [maksud.workspace@gmail.com](mailto:maksud.workspace@gmail.com)
 
-Project Repository: [markbangla-editor](https://github.com/AbdullahAlMaksud/markbangla-editor)
+Website: [abdullahalmaksud.com](https://abdullahalmaksud.com)
+
+LinkedIn: [@AbdullahAlMaksud](https://linkedin.com/in/AbdullahAlMaksud)
+
+GitHub: [@AbdullahAlMaksud](https://github.com/AbdullahAlMaksud)
