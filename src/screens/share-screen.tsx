@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { marked } from "marked";
 import {
   ArrowLeft,
+  BookOpen,
   Check,
   Copy,
   Download,
@@ -39,12 +40,12 @@ renderer.code = (code: string, infostring?: string) => {
 
 marked.setOptions({ gfm: true, breaks: true, renderer });
 
-interface ShareViewerProps {
+interface ShareScreenProps {
   initialDoc: SharedDocument | null;
   id: string;
 }
 
-export default function ShareViewer({ initialDoc, id }: ShareViewerProps) {
+export default function ShareScreen({ initialDoc, id }: ShareScreenProps) {
   const router = useRouter();
 
   const [loading, setLoading] = useState(!initialDoc);
@@ -68,16 +69,16 @@ export default function ShareViewer({ initialDoc, id }: ShareViewerProps) {
         const res = await fetch(`/api/share/${id}`);
         if (!res.ok) {
           if (res.status === 404) {
-            throw new Error("ডকুমেন্টটি পাওয়া যায়নি। লিংকটি সঠিক কিনা পরীক্ষা করুন।");
+            throw new Error("Document not found. Please verify the URL.");
           }
-          throw new Error("ডকুমেন্ট লোড করতে সমস্যা হয়েছে।");
+          throw new Error("Failed to load document from server.");
         }
         const data = await res.json();
         if (!isCancelled && data.document) {
           setDoc(data.document);
         }
       } catch (err: any) {
-        if (!isCancelled) setError(err.message || "Failed to load");
+        if (!isCancelled) setError(err.message || "Failed to load document");
       } finally {
         if (!isCancelled) setLoading(false);
       }
@@ -89,7 +90,7 @@ export default function ShareViewer({ initialDoc, id }: ShareViewerProps) {
     };
   }, [id, doc]);
 
-  // Render markdown -> HTML
+  // Render markdown -> sanitized HTML
   useEffect(() => {
     if (!doc?.markdown) return;
     let cancelled = false;
@@ -132,7 +133,7 @@ export default function ShareViewer({ initialDoc, id }: ShareViewerProps) {
           startOnLoad: false,
           theme: "default",
           securityLevel: "loose",
-          fontFamily: "Hind Siliguri, Inter, sans-serif",
+          fontFamily: "Inter, Hind Siliguri, sans-serif",
         });
         try {
           if (!cancelled) await mermaid.run({ nodes: Array.from(mermaidNodes) });
@@ -174,6 +175,7 @@ export default function ShareViewer({ initialDoc, id }: ShareViewerProps) {
           fontSize: doc.fontSize,
           pageSize: doc.pageSize,
           wide: doc.wide,
+          viewMode: "editor",
         })
       );
     } catch (e) {
@@ -222,7 +224,7 @@ export default function ShareViewer({ initialDoc, id }: ShareViewerProps) {
     return (
       <div className="flex h-screen w-full flex-col items-center justify-center gap-4 bg-canvas text-toolbar-foreground">
         <Loader2 className="h-8 w-8 animate-spin text-primary" />
-        <p className="text-sm text-toolbar-muted">শেয়ারকৃত ডকুমেন্ট লোড হচ্ছে...</p>
+        <p className="text-sm text-toolbar-muted">Loading shared document...</p>
       </div>
     );
   }
@@ -234,15 +236,22 @@ export default function ShareViewer({ initialDoc, id }: ShareViewerProps) {
           <Share2 className="h-8 w-8" />
         </div>
         <div className="max-w-md">
-          <h2 className="text-xl font-bold text-toolbar-foreground">ডকুমেন্ট খুঁজে পাওয়া যায়নি</h2>
+          <h2 className="text-xl font-bold text-toolbar-foreground">Document Not Found</h2>
           <p className="mt-2 text-sm text-toolbar-muted">
-            {error || "লিংকটি মেয়াদোত্তীর্ণ হতে পারে অথবা মুছে ফেলা হয়েছে।"}
+            {error || "The shared document could not be found or the link may have expired."}
           </p>
         </div>
         <Button asChild className="gap-2 bg-primary hover:bg-primary/90">
-          <Link href="/">
+          <Link
+            href="/"
+            onClick={() => {
+              try {
+                localStorage.removeItem("imported_shared_doc");
+              } catch (e) {}
+            }}
+          >
             <ArrowLeft className="h-4 w-4" />
-            এডিটরে ফিরে যান
+            Back to Editor
           </Link>
         </Button>
       </div>
@@ -254,10 +263,22 @@ export default function ShareViewer({ initialDoc, id }: ShareViewerProps) {
       {/* Top Navbar */}
       <header className="no-print sticky top-0 z-40 flex h-14 items-center justify-between border-b border-toolbar-border bg-toolbar/95 px-4 backdrop-blur md:px-8">
         <div className="flex items-center gap-3">
-          <Button variant="ghost" size="sm" asChild className="gap-1.5 text-toolbar-muted hover:text-toolbar-foreground">
-            <Link href="/">
+          <Button
+            variant="ghost"
+            size="sm"
+            asChild
+            className="gap-1.5 text-toolbar-muted hover:text-toolbar-foreground"
+          >
+            <Link
+              href="/"
+              onClick={() => {
+                try {
+                  localStorage.removeItem("imported_shared_doc");
+                } catch (e) {}
+              }}
+            >
               <ArrowLeft className="h-4 w-4" />
-              <span className="hidden sm:inline">MarkBangla এডিটর</span>
+              <span className="hidden sm:inline">MarkBangla Editor</span>
             </Link>
           </Button>
           <div className="h-4 w-px bg-toolbar-border hidden sm:block" />
@@ -273,10 +294,14 @@ export default function ShareViewer({ initialDoc, id }: ShareViewerProps) {
             size="sm"
             onClick={handleCopyLink}
             className="gap-1.5 border-toolbar-border bg-toolbar-2 text-xs text-toolbar-foreground hover:bg-toolbar-border"
-            title="শেয়ার লিংক কপি করুন"
+            title="Copy shareable link"
           >
-            {copied ? <Check className="h-3.5 w-3.5 text-emerald-400" /> : <Copy className="h-3.5 w-3.5" />}
-            <span className="hidden md:inline">{copied ? "কপি হয়েছে" : "লিংক কপি"}</span>
+            {copied ? (
+              <Check className="h-3.5 w-3.5 text-emerald-400" />
+            ) : (
+              <Copy className="h-3.5 w-3.5" />
+            )}
+            <span className="hidden md:inline">{copied ? "Copied!" : "Copy Link"}</span>
           </Button>
 
           <Button
@@ -284,10 +309,10 @@ export default function ShareViewer({ initialDoc, id }: ShareViewerProps) {
             size="sm"
             onClick={handleDownloadMarkdown}
             className="gap-1.5 border-toolbar-border bg-toolbar-2 text-xs text-toolbar-foreground hover:bg-toolbar-border hidden sm:flex"
-            title="মার্কডাউন (.md) ডাউনলোড"
+            title="Download Markdown (.md)"
           >
             <FileDown className="h-3.5 w-3.5" />
-            <span className="hidden md:inline">.md সেভ</span>
+            <span className="hidden md:inline">Save .md</span>
           </Button>
 
           <Button
@@ -295,7 +320,7 @@ export default function ShareViewer({ initialDoc, id }: ShareViewerProps) {
             size="sm"
             onClick={handlePrint}
             className="gap-1.5 border-toolbar-border bg-toolbar-2 text-xs text-toolbar-foreground hover:bg-toolbar-border hidden sm:flex"
-            title="PDF ডাউনলোড"
+            title="Download PDF"
           >
             <Download className="h-3.5 w-3.5" />
             <span className="hidden md:inline">PDF</span>
@@ -307,7 +332,7 @@ export default function ShareViewer({ initialDoc, id }: ShareViewerProps) {
             className="gap-1.5 bg-primary text-xs font-medium text-primary-foreground hover:bg-primary/90 shadow-md"
           >
             <Edit3 className="h-3.5 w-3.5" />
-            <span>এডিটরে খুলুন</span>
+            <span>Open in Editor</span>
           </Button>
         </div>
       </header>

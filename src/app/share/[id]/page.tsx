@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { getSharedDocument } from "@/lib/db";
-import ShareViewer from "./share-viewer";
+import ShareScreen from "@/screens/share-screen";
 
 export const dynamic = "force-dynamic";
 
@@ -14,8 +14,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!doc) {
     return {
-      title: "ডকুমেন্ট পাওয়া যায়নি | MarkBangla",
-      description: "শেয়ারকৃত ডকুমেন্টটি খুঁজে পাওয়া যায়নি।",
+      title: "Document Not Found | MarkBangla",
+      description: "The requested shared document could not be found.",
     };
   }
 
@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const title = `${doc.title} — MarkBangla`;
   const description =
-    plainExcerpt || "MarkBangla দিয়ে তৈরি ও শেয়ারকৃত বাংলা/ইংরেজি মার্কডাউন ডকুমেন্ট।";
+    plainExcerpt || "Markdown document created and shared with MarkBangla.";
 
   return {
     title,
@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: "article",
       siteName: "MarkBangla",
       url: `/share/${id}`,
-      locale: "bn_BD",
+      locale: "en_US",
       images: [
         {
           url: "/images/logo.png",
@@ -62,5 +62,5 @@ export default async function SharedDocumentPage({ params }: PageProps) {
   const { id } = params;
   const doc = await getSharedDocument(id);
 
-  return <ShareViewer initialDoc={doc} id={id} />;
+  return <ShareScreen initialDoc={doc} id={id} />;
 }

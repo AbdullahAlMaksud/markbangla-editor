@@ -1,5 +1,5 @@
-import MarkdownPdfEditor from "@/components/markdown-pdf-editor";
+import EditorScreen from "@/screens/editor-screen";
 
 export default function Home() {
-  return <MarkdownPdfEditor />;
+  return <EditorScreen />;
 }

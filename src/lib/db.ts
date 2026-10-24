@@ -3,6 +3,7 @@ import crypto from "crypto";
 import dns from "dns";
 import fs from "fs";
 import path from "path";
+import { encryptData, decryptData } from "./encryption";
 
 // Fix Windows / local ISP DNS issues resolving MongoDB SRV records (querySrv ECONNREFUSED)
 try {
@@ -21,6 +22,7 @@ export interface SharedDocument {
   fontSize?: number;
   pageSize?: string;
   wide?: boolean;
+  isEncrypted?: boolean;
   views?: number;
   createdAt: string;
   updatedAt?: string;
@@ -207,43 +209,49 @@ export async function saveSharedDocument(
   const now = new Date().toISOString();
   const dbName = process.env.MONGODB_DB || "markdown_app";
 
-  const doc: SharedDocument = {
+  // Securely encrypt markdown content before storing in database
+  const encryptedMarkdown = encryptData(input.markdown);
+
+  const docToSave: SharedDocument = {
     id,
-    markdown: input.markdown,
+    markdown: encryptedMarkdown,
     title: input.title || "Untitled Document",
     preset: input.preset || "classic",
     fontChoice: input.fontChoice || "default",
     fontSize: input.fontSize || 16,
     pageSize: input.pageSize || "a4",
     wide: !!input.wide,
+    isEncrypted: true,
     views: 0,
     createdAt: now,
     updatedAt: now,
   };
 
   // 1. Save to MongoDB Atlas if available
-  let savedToMongo = false;
   try {
     const mongo = await getMongoClient();
     if (mongo) {
       const db = mongo.db(dbName);
       const collection = db.collection<SharedDocument>("shared_documents");
-      await collection.insertOne(doc);
-      savedToMongo = true;
+      await collection.insertOne({ ...docToSave });
     }
   } catch (err) {
     console.error("MongoDB insert error:", err);
   }
 
   // 2. Also save / backup to GitHub Repository if configured (async / non-blocking)
-  saveToGitHub(doc).catch((e) => console.warn("GitHub backup failed:", e));
+  saveToGitHub(docToSave).catch((e) => console.warn("GitHub backup failed:", e));
 
   // 3. Update local fallback store
   const store = getLocalStore();
-  store.set(id, doc);
+  store.set(id, docToSave);
   persistLocalStore();
 
-  return doc;
+  // Return with plain text markdown for caller convenience
+  return {
+    ...docToSave,
+    markdown: input.markdown,
+  };
 }
 
 export async function getSharedDocument(
@@ -251,6 +259,8 @@ export async function getSharedDocument(
 ): Promise<SharedDocument | null> {
   if (!id) return null;
   const dbName = process.env.MONGODB_DB || "markdown_app";
+
+  let rawDoc: SharedDocument | null = null;
 
   // 1. Try MongoDB Atlas first (fastest)
   try {
@@ -263,7 +273,7 @@ export async function getSharedDocument(
         collection
           .updateOne({ id }, { $inc: { views: 1 } })
           .catch((err) => console.error("View increment error:", err));
-        return doc;
+        rawDoc = doc;
       }
     }
   } catch (err) {
@@ -271,19 +281,26 @@ export async function getSharedDocument(
   }
 
   // 2. Try GitHub Repository File System if not found in MongoDB
-  const githubDoc = await getFromGitHub(id);
-  if (githubDoc) {
-    return githubDoc;
+  if (!rawDoc) {
+    rawDoc = await getFromGitHub(id);
   }
 
   // 3. Try Local Store fallback
-  const store = getLocalStore();
-  const doc = store.get(id);
-  if (doc) {
-    doc.views = (doc.views || 0) + 1;
-    persistLocalStore();
-    return doc;
+  if (!rawDoc) {
+    const store = getLocalStore();
+    const doc = store.get(id);
+    if (doc) {
+      doc.views = (doc.views || 0) + 1;
+      persistLocalStore();
+      rawDoc = doc;
+    }
   }
 
-  return null;
+  if (!rawDoc) return null;
+
+  // Decrypt markdown payload before returning to application
+  return {
+    ...rawDoc,
+    markdown: decryptData(rawDoc.markdown),
+  };
 }

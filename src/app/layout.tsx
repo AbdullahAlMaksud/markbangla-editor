@@ -7,24 +7,23 @@ const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://markbangla.app";
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "MarkBangla — বাংলা ও ইংরেজি মার্কডাউন এডিটর এবং পিডিএফ এক্সপোর্টার",
+    default: "MarkBangla — Modern Markdown Editor & PDF Exporter",
     template: "%s | MarkBangla",
   },
   description:
-    "MarkBangla একটি আধুনিক বাংলা ও ইংরেজি মার্কডাউন এডিটর। লাইভ প্রিভিউ, মারমেইড চার্ট, ৮টি থিম, ভেক্টর PDF ও Markdown এক্সপোর্ট এবং ক্লাউড শেয়ারিং সুবিধা।",
+    "MarkBangla is a modern Markdown editor and PDF exporter with real-time preview, Mermaid charts, custom typography themes, and instant cloud sharing.",
   applicationName: "MarkBangla",
   authors: [{ name: "Abdullah Al Maksud" }],
   generator: "Next.js",
   keywords: [
     "MarkBangla",
     "Markdown Editor",
-    "Bangla Markdown",
-    "বাংলা মার্কডাউন",
-    "PDF Exporter",
     "Markdown to PDF",
-    "Mermaid Diagram",
-    "Bangla Typography",
+    "PDF Exporter",
+    "Mermaid Diagrams",
+    "Typography",
     "Open Source Markdown",
+    "Live Preview",
   ],
   icons: {
     icon: "/images/logo.png",
@@ -33,26 +32,26 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "bn_BD",
+    locale: "en_US",
     url: "/",
     siteName: "MarkBangla",
-    title: "MarkBangla — বাংলা ও ইংরেজি মার্কডাউন এডিটর এবং পিডিএফ এক্সপোর্টার",
+    title: "MarkBangla — Modern Markdown Editor & PDF Exporter",
     description:
-      "অনলাইন বাংলা ও ইংরেজি মার্কডাউন এডিটর, লাইভ প্রিভিউ, মারমেইড ডায়াগ্রাম, ৮টি আকর্ষণীয় থিম ও ভেক্টর PDF এক্সপোর্ট।",
+      "Online Markdown editor with live preview, Mermaid diagrams, bespoke themes, and vector PDF export.",
     images: [
       {
         url: "/images/logo.png",
         width: 630,
         height: 630,
-        alt: "MarkBangla — বাংলা ও ইংরেজি মার্কডাউন এডিটর",
+        alt: "MarkBangla — Markdown Editor",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "MarkBangla — বাংলা ও ইংরেজি মার্কডাউন এডিটর",
+    title: "MarkBangla — Modern Markdown Editor & PDF Exporter",
     description:
-      "অনলাইন বাংলা ও ইংরেজি মার্কডাউন এডিটর, লাইভ প্রিভিউ, মারমেইড ডায়াগ্রাম, ৮টি থিম ও ভেক্টর PDF এক্সপোর্ট।",
+      "Online Markdown editor with live preview, Mermaid diagrams, themes, and vector PDF export.",
     images: ["/images/logo.png"],
     creator: "@markbangla",
   },
@@ -68,7 +67,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="bn">
+    <html lang="en">
       <body className="font-ui">{children}</body>
     </html>
   );
