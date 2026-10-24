@@ -18,13 +18,13 @@
 
 ## Table of Contents
 
-- About
-- Features
-- Tech Stack
-- Getting Started
-- Contributing
-- License
-- Contact
+- [About](#about)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
 ## About
 
