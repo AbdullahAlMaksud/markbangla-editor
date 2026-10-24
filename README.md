@@ -5,7 +5,7 @@
 **MarkBangla** is a modern, fast, and feature-rich Markdown editor tailored for Bengali and English typography. It features a real-time split-screen preview, 8 curated typography themes, Mermaid diagram rendering, draggable pane resizing, custom font uploads, vector-quality PDF and Markdown export, and cloud document sharing.
 
 [![pnpm](https://img.shields.io/badge/pnpm-9+-4a4a55?style=for-the-badge&logo=pnpm&logoColor=f69220)](https://pnpm.io/)
-[![Next.js](https://img.shields.io/badge/Next.js-14.2-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-16.4-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.5-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38bdf8?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
 [![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
@@ -49,7 +49,7 @@
 ## Tech Stack
 
 - **Package Manager**: [pnpm](https://pnpm.io/)
-- **Framework**: [Next.js 14](https://nextjs.org/) (App Router, Server Components & Dynamic API Routes)
+- **Framework**: [Next.js 16](https://nextjs.org/) (App Router, Server Components & Dynamic API Routes)
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/) & [shadcn/ui](https://ui.shadcn.com/)
 - **Database**: [MongoDB Atlas](https://www.mongodb.com/) (with resilient local storage fallback)

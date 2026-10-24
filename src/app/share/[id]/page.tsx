@@ -5,11 +5,11 @@ import ShareScreen from "@/screens/share-screen";
 export const dynamic = "force-dynamic";
 
 interface PageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { id } = params;
+  const { id } = await params;
   const doc = await getSharedDocument(id);
 
   if (!doc) {
@@ -59,7 +59,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function SharedDocumentPage({ params }: PageProps) {
-  const { id } = params;
+  const { id } = await params;
   const doc = await getSharedDocument(id);
 
   return <ShareScreen initialDoc={doc} id={id} />;
